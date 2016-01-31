@@ -1,9 +1,14 @@
-# Require core library
+require 'active_support'
 require 'middleman-core'
 
 # Extension namespace
-class MyExtension < ::Middleman::Extension
-  option :my_option, 'default', 'An example option'
+class Weby < ::Middleman::Extension
+  extend ActiveSupport::Autoload
+
+  autoload :Extensions
+  autoload :Helpers
+
+  option :publish_future_dated, false, 'Whether pages with a date in the future should be considered published'
 
   def initialize(app, options_hash = {}, &block)
     # Call super to build options from the options_hash
@@ -21,18 +26,24 @@ class MyExtension < ::Middleman::Extension
   end
 
   # A Sitemap Manipulator
-  # def manipulate_resource_list(resources)
-  # end
+  def manipulate_resource_list(resources)
+    resources.each do |resource|
+      enhance_resource(resource)
+    end
+  end
 
-  # helpers do
-  #   def a_helper
-  #   end
-  # end
+  def enhance_resource(resource)
+    return unless resource.respond_to?(:data)
+    resource.extend Extensions::DataPage
+    resource.resource_controller = self
+  end
+
+  helpers Helpers
 end
 
 # Register extensions which can be activated
 # Make sure we have the version of Middleman we expect
-# Name param may be omited, it will default to underscored
+# Name param may be omitted, it will default to underscored
 # version of class name
 
-# MyExtension.register(:my_extension)
+Middleman::Extensions.register(:weby, Weby)

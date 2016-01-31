@@ -1,11 +1,12 @@
-# If you do not have OpenSSL installed, update
-# the following line to use "http://" instead
 source 'https://rubygems.org'
 
 # Specify your gem's dependencies in weby.gemspec
 gemspec
 
 group :development do
+  gem 'middleman-cli'
+  gem 'redcarpet'
+
   gem 'rake'
   gem 'rdoc'
   gem 'yard'
