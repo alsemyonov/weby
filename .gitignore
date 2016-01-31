@@ -6,3 +6,6 @@
 
 # Gem is not ruby version-specific
 /.ruby-version
+
+# Ignore temporary files
+/tmp
