@@ -1,0 +1,5 @@
+<ul>
+  <% sitemap.resources.each do |resource| %>
+    <%= partial 'resource', locals: {resource: resource} %>
+  <% end %>
+</ul>

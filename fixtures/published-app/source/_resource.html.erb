@@ -1,0 +1,15 @@
+<li>
+  <p><%= resource.title || resource.url %></p>
+  <%= partial 'data', locals: {resource: resource} %>
+  <dl>
+    <% if resource.children.any? %>
+      <dt>Children:</dt>
+      <dd>
+        <ul>
+          <% resource.children.each do |child| %>
+            <%= partial 'resource', locals: { resource: child } %>
+          <% end %>
+        </ul>
+    <% end %>
+  </dl>
+</li>

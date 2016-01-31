@@ -1,0 +1,15 @@
+<% resource ||= current_resource %>
+<% if (true || app.environment == :development) && resource.respond_to?(:data) %>
+  <table>
+    <tr><th scope="row">title:</th><td><%= inspect resource.title %></td></tr>
+    <tr><th scope="row">url:</th><td><%= link_to(inspect(resource.url), resource.url) %></td></tr>
+    <tr><th scope="row">path:</th><td><%= inspect(resource.path) %></td></tr>
+    <tr><th scope="row">parent:</th><td><%= inspect(resource.parent) %></td></tr>
+    <% resource.data.each do |name, value| %>
+      <tr><th scope="row"><%= name %>:</th><td><%= inspect value %></td></tr>
+    <% end %>
+    <tr><th scope="row">published by date:</th><td><%= inspect(resource.published_by_date?) %></td></tr>
+    <tr><th scope="row">options published:</th><td><%= inspect(resource.options_published?) %></td></tr>
+  </table>
+  <hr>
+<% end %>

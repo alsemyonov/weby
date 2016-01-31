@@ -9,3 +9,6 @@
 
 # Ignore temporary files
 /tmp
+
+# Ignore Simplecov coverage metrics
+/coverage

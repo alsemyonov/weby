@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= current_resource.title %></title>
+    <% current_resource.to_meta.each do |meta| %>
+      <%= tag(:meta, meta) %>
+    <% end %>
+  </head>
+  <body>
+    <%= partial 'data' %>
+    <%= yield %>
+  </body>
+</html>
