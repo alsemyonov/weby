@@ -12,3 +12,7 @@
 
 # Ignore Simplecov coverage metrics
 /coverage
+
+# Ignore YARD documentation
+/.yardoc
+/doc

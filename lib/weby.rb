@@ -2,13 +2,15 @@ require 'active_support'
 require 'middleman-core'
 
 # Extension namespace
+require 'middleman-core/extension'
 class Weby < ::Middleman::Extension
   extend ActiveSupport::Autoload
 
   autoload :Extensions
   autoload :Helpers
+  autoload :Sitemap
 
-  option :publish_future_dated, nil, 'Whether pages with a date in the future should be considered published (development: true, production: false)'
+  option :publish_future_dated, false, 'Whether pages with a date in the future should be considered published (development: true, production: false)'
 
   def self.version
     Gem.loaded_specs['weby'].version
@@ -23,6 +25,8 @@ class Weby < ::Middleman::Extension
 
     # Publish future dated pages in development environment
     options[:publish_future_dated] = (app.environment == :development) if options[:publish_future_dated] == nil
+
+    app.sitemap.extend Sitemap
   end
 
   def after_configuration
@@ -61,4 +65,5 @@ class Weby < ::Middleman::Extension
   helpers Helpers
 end
 
+require 'middleman-core/extensions'
 Middleman::Extensions.register(:weby, Weby)
