@@ -33,9 +33,7 @@ Feature: Unpublished site section
     And a file named "config.rb" with:
       """
       set :environment, :production
-      activate :weby do |web|
-        web.publish_future_dated = true
-      end
+      activate(:weby) { |web| web.publish_future_dated = true }
       activate :directory_indexes
       """
     Given the Server is running at "published-app"

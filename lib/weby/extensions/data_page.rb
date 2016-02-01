@@ -6,7 +6,11 @@ class Weby
       # The title of the article, set from frontmatter.
       # @return [String]
       def title
-        data['title']
+        data['title'] || File.basename(path)
+      end
+
+      def full_url
+        URI.join(sitemap.url, url)
       end
 
       def description
