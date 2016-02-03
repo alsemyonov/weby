@@ -41,25 +41,28 @@ class Weby
           html?
         end
 
+        # @return [Boolean] format is `HTML`
         def html?
           path =~ /\.html?$/
         end
 
+        # @return [Boolean] visible to robots?
         def robots?
           !humans?
         end
 
+        # @return [Boolean] visible to humans?
         def navigatable?
           humans?
         end
 
-        # @return [Boolean]
+        # @return [Boolean] visible in menu?
         def menu?
           data[:menu] = title.present? unless data.key?(:menu)
           navigatable? && (parent ? parent.menu? : true) && data[:menu]
         end
 
-        # @return [String] dot.joined.string used for data lookups
+        # @return [String] Dot joined string `dot.joined.string` used for data lookups in `navigation.yml` and `I18n`
         def data_lookup_path
           ['navigation', resource.data_lookup_path].compact.join('.').gsub(/\.+/, '.')
         end

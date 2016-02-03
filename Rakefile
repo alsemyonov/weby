@@ -41,7 +41,15 @@ end
 begin
   require 'yard'
   require 'cucumber'
-  YARD::Rake::YardocTask.new(:doc)
+  namespace :doc do
+    YARD::Rake::YardocTask.new(:generate)
+
+    desc 'Run YARD server'
+    task :server do
+      `yard server --reload --cache`
+    end
+  end
+  task doc: 'doc:generate'
 rescue LoadError => e
   task(:doc) { abort 'Bundle with development group: `bundle install --with development`' }
 end

@@ -10,6 +10,7 @@ class Weby
     autoload :Sortable
     autoload :Typify
 
+    # Extends {Middleman::Sitemap::Resource} with all extensions provided by {Weby::Resource}
     def self.setup!
       require 'middleman-core/sitemap/resource'
       Middleman::Sitemap::Resource.class_eval do
