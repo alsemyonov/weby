@@ -12,6 +12,7 @@ class Weby < ::Middleman::Extension
   autoload :Sitemap
 
   option :publish_future_dated, false, 'Whether pages with a date in the future should be considered published (development: true, production: false)'
+  option :pry, true, 'Use Pry instead of IRB in Middleman console'
   option :enhance_slim, true, 'Customize Slim Engine to support shortcuts for role and itemprop'
   option :enhance_markdown, true, 'Customize Markdown renderer to support Abbreviations and list check boxes'
 
@@ -28,7 +29,8 @@ class Weby < ::Middleman::Extension
     super
 
     # Require libraries only when activated
-    # require 'necessary/library'
+    require 'weby/pry' if options[:pry]
+
     if options[:enhance_slim]
       require 'weby/slim'
       enhance_slim
