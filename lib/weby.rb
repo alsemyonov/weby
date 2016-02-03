@@ -8,6 +8,7 @@ class Weby < ::Middleman::Extension
   extend ActiveSupport::Autoload
 
   autoload :Extensions
+  autoload :Resource
   autoload :Helpers
   autoload :Sitemap
 
