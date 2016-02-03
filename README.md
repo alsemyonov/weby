@@ -12,6 +12,7 @@ Make better web by using semantics in your personal site.
 ## Middleman::Sitemap::Resource
 
 ### Modules
+
 *   {Weby::Resource::DataPage}
 
     ``` yaml
@@ -27,7 +28,7 @@ Make better web by using semantics in your personal site.
     ``` yaml
     navigation:
       title: Page title used in navigation
-      menu: Include in navigation
+      menu: true # (include in menu)
       relations:
       - href: /about.foaf.xml
         type: 'application/rdf+xml'

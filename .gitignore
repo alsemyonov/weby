@@ -19,3 +19,6 @@
 # Ignore YARD documentation
 /.yardoc
 /doc
+
+# Ignore built site
+/build
