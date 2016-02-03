@@ -13,7 +13,7 @@ group :development do
 
   # Build and doc tools
   gem 'rake', '~> 10.3', require: false
-  gem 'rdoc'
+  gem 'rdoc', '~> 4.2.1', require: false
   gem 'yard', '~> 0.8', require: false
   gem 'pry', '~> 0.10', require: false
 end
@@ -23,6 +23,7 @@ group :test do
   gem 'cucumber', '~> 2.0', require: false
   gem 'aruba', '~> 0.7.4', require: false
   gem 'rspec', '~> 3.0', require: false
+  gem 'rspec-its', '~> 1.2.0', require: false
 
   gem 'timecop', '~> 0.6.3'
   gem 'nokogiri'

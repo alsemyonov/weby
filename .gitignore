@@ -10,6 +10,9 @@
 # Ignore temporary files
 /tmp
 
+# Ignore RSpec examples
+/spec/examples.txt
+
 # Ignore Simplecov coverage metrics
 /coverage
 

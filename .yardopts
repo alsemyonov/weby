@@ -1,0 +1,4 @@
+**/*.gemspec
+lib/**/*.rb
+--readme README.md
+
