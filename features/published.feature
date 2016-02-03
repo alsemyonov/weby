@@ -1,6 +1,8 @@
 Feature: Unpublished site section
   Scenario: Unpublished site sections show up in the preview server
     Given the Server is running at "published-app"
+    When I go to "/"
+    Then I should see "Environment: development"
     When I go to "/published/"
     Then I should see "Published Site Part Content"
     When I go to "/unpublished/"
@@ -46,12 +48,28 @@ Feature: Unpublished site section
     When I go to "/future/"
     Then I should see "Future Site"
 
-  Scenario: Unpublished site sections don't get built
+  Scenario: Unpublished site sections don't get built in production environment
+    And a fixture app "published-app"
+    And a file named "config.rb" with:
+      """
+      set :environment, :production
+      activate :weby
+      activate :directory_indexes
+      """
     Given a successfully built app at "published-app"
     When I cd to "build"
     Then the following files should not exist:
-      | future/index.html  |
+      | future/index.html       |
       | unpublished/index.html  |
       | unpublished/example.txt |
     Then the following files should exist:
       | published/index.html    |
+
+  Scenario: Unpublished site sections get built in development environment
+    Given a successfully built app at "published-app"
+    When I cd to "build"
+    Then the following files should exist:
+      | published/index.html    |
+      | future/index.html       |
+      | unpublished/index.html  |
+      | unpublished/example.txt |
