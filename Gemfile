@@ -8,7 +8,7 @@ group :development do
   gem 'middleman-core', git: 'https://github.com/middleman/middleman.git', branch: 'master'
 
   platforms :ruby do
-    gem 'redcarpet', '~> 3.0'
+    gem 'redcarpet', '>= 3.3'
   end
 
   # Build and doc tools

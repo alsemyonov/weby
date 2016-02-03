@@ -1,8 +1,9 @@
 require 'active_support'
 require 'middleman-core'
 
-# Extension namespace
 require 'middleman-core/extension'
+
+# Middleman extension that enhances sitemap and resources with methods every page resource deserves.
 class Weby < ::Middleman::Extension
   extend ActiveSupport::Autoload
 
@@ -11,17 +12,26 @@ class Weby < ::Middleman::Extension
   autoload :Sitemap
 
   option :publish_future_dated, false, 'Whether pages with a date in the future should be considered published (development: true, production: false)'
+  option :enhance_markdown, true, 'Customize Markdown renderer to support Abbreviations and list check boxes'
 
+  # @return [Gem::Version]
   def self.version
     Gem.loaded_specs['weby'].version
   end
 
+  # @param [Middleman::Application] app
+  # @param [Hash] options_hash
+  # @param [Proc] block
   def initialize(app, options_hash = {}, &block)
     # Call super to build options from the options_hash
     super
 
     # Require libraries only when activated
     # require 'necessary/library'
+    if options[:enhance_markdown]
+      require 'weby/markdown'
+      enhance_markdown
+    end
 
     # Publish future dated pages in development environment
     options[:publish_future_dated] = (app.environment == :development) if options[:publish_future_dated] == nil
@@ -60,7 +70,7 @@ class Weby < ::Middleman::Extension
     resource
   end
 
-  delegate data: :app
+  delegate [:data, :set, :sitemap, :config] => :app
 
   helpers Helpers
 end
