@@ -12,6 +12,7 @@ class Weby < ::Middleman::Extension
   autoload :Sitemap
 
   option :publish_future_dated, false, 'Whether pages with a date in the future should be considered published (development: true, production: false)'
+  option :enhance_slim, true, 'Customize Slim Engine to support shortcuts for role and itemprop'
   option :enhance_markdown, true, 'Customize Markdown renderer to support Abbreviations and list check boxes'
 
   # @return [Gem::Version]
@@ -28,6 +29,11 @@ class Weby < ::Middleman::Extension
 
     # Require libraries only when activated
     # require 'necessary/library'
+    if options[:enhance_slim]
+      require 'weby/slim'
+      enhance_slim
+    end
+
     if options[:enhance_markdown]
       require 'weby/markdown'
       enhance_markdown

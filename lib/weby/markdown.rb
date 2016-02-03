@@ -26,6 +26,8 @@ class Weby
         no_intra_emphasis: true,
         renderer: Renderer,
       })
+      config[:slim] ||= {}
+      config[:slim][:markdown] = config[:markdown]
     end
   end
 

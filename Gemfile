@@ -6,6 +6,7 @@ gemspec
 group :development do
   gem 'middleman-cli', git: 'https://github.com/middleman/middleman.git', branch: 'master'
   gem 'middleman-core', git: 'https://github.com/middleman/middleman.git', branch: 'master'
+  gem 'slim'
 
   platforms :ruby do
     gem 'redcarpet', '>= 3.3'
