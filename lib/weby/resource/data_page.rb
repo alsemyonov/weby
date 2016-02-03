@@ -40,7 +40,7 @@ class Weby
 
       # @return [String] dot.joined.string used for data lookups
       def data_lookup_path
-        @lookup_path ||= url.to_s.split(%r(/+)).map(&:presence).compact.join('.')
+        @data_lookup_path ||= url.to_s.split(%r(/+)).map(&:presence).compact.join('.')
       end
 
       def author
@@ -48,7 +48,7 @@ class Weby
       end
 
       def children
-        @enhanced_children ||= super.sort
+        @sorted_children ||= super.sort
       end
 
       def inspect
