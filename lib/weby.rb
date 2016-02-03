@@ -48,7 +48,7 @@ class Weby < ::Middleman::Extension
   end
 
   def after_configuration
-    # Do something
+    app.sitemap.extend Sitemap
   end
 
   # A Sitemap Manipulator
