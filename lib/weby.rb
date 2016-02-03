@@ -7,12 +7,11 @@ require 'middleman-core/extension'
 class Weby < ::Middleman::Extension
   extend ActiveSupport::Autoload
 
-  autoload :Extensions
   autoload :Resource
   autoload :Helpers
   autoload :Sitemap
 
-  option :publish_future_dated, false, 'Whether pages with a date in the future should be considered published (development: true, production: false)'
+  option :publish_future_dated, nil, 'Whether pages with a date in the future should be considered published (development: true, production: false)'
   option :pry, true, 'Use Pry instead of IRB in Middleman console'
   option :enhance_slim, true, 'Customize Slim Engine to support shortcuts for role and itemprop'
   option :enhance_markdown, true, 'Customize Markdown renderer to support Abbreviations and list check boxes'
@@ -44,39 +43,27 @@ class Weby < ::Middleman::Extension
 
     # Publish future dated pages in development environment
     options[:publish_future_dated] = (app.environment == :development) if options[:publish_future_dated] == nil
-
-    app.sitemap.extend Sitemap
   end
 
   def after_configuration
+    Resource.setup!
     app.sitemap.extend Sitemap
   end
 
-  # A Sitemap Manipulator
-  # @param [<Middleman::Sitemap::Resource>] resource
+  # Enhances every resource with +Weby::Extensions+,
+  # applies `published` rules
+  # @param [<Middleman::Sitemap::Resource>] resources
   def manipulate_resource_list(resources)
     resources.map do |resource|
       next resource if resource.ignored?
-      resource = enhance_resource(resource)
+      resource.resources_controller ||= self
 
-      case app.environment
-      when :production
+      if app.environment == :production
         app.ignore(resource.path) unless resource.published?
       end
 
       resource
     end
-  end
-
-  # @param [Middleman::Sitemap::Resource] resource
-  def enhance_resource(resource)
-    return resource unless resource.is_a?(Middleman::Sitemap::Resource)
-    return resource if resource.is_a?(Extensions::DataPage)
-
-    resource.extend Extensions::DataPage
-    resource.resources_controller = self
-
-    resource
   end
 
   delegate [:data, :set, :sitemap, :config] => :app
