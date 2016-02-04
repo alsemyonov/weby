@@ -1,5 +1,8 @@
 # Weby
 
+[![Dependency Status](https://gemnasium.com/alsemyonov/weby.svg)](https://gemnasium.com/alsemyonov/weby)
+[![Build Status](https://travis-ci.org/alsemyonov/weby.svg?branch=master)](https://travis-ci.org/alsemyonov/weby)
+
 Make better web by using semantics in your personal site.
 
 ## Middleman::Sitemap
