@@ -34,5 +34,5 @@ group :test do
   gem 'rubocop', '~> 0.24', require: false
   gem 'simplecov', '~> 0.9', require: false
   gem 'coveralls', '~> 0.8', require: false
-  gem 'codeclimate-test-reporter', '~> 0.3', require: false, group: :test
+  gem 'codeclimate-test-reporter', '~> 0.4', require: false
 end

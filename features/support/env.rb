@@ -11,6 +11,9 @@ end
 require 'coveralls'
 Coveralls.wear!
 
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+
 require 'middleman-core'
 require 'middleman-core/step_definitions'
 require 'weby'

@@ -13,6 +13,9 @@ SimpleCov.start { add_filter '/features/' }
 require 'coveralls'
 Coveralls.wear!
 
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+
 require 'weby'
 
 RSpec.configure do |config|
