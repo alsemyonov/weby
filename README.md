@@ -1,6 +1,7 @@
 # Weby
 
 [![Dependency Status](https://gemnasium.com/alsemyonov/weby.svg)](https://gemnasium.com/alsemyonov/weby)
+[![security](https://hakiri.io/github/alsemyonov/weby/master.svg)](https://hakiri.io/github/alsemyonov/weby/master)
 [![Build Status](https://travis-ci.org/alsemyonov/weby.svg?branch=master)](https://travis-ci.org/alsemyonov/weby)
 [![Code Climate](https://codeclimate.com/github/alsemyonov/weby/badges/gpa.svg)](https://codeclimate.com/github/alsemyonov/weby)
 [![Test Coverage](https://codeclimate.com/github/alsemyonov/weby/badges/coverage.svg)](https://codeclimate.com/github/alsemyonov/weby/coverage)
