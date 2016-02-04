@@ -139,5 +139,7 @@ class Weby
         data
       end
     end
+
+    include Navigatable
   end
 end

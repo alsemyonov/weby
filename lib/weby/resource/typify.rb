@@ -3,8 +3,8 @@ require 'weby/resource'
 class Weby
   module Resource
     module Typify
-      def page_type
-        metadata[:locals]['page_type'] ||= data['page_type'] ||
+      def resource_type
+        metadata[:locals]['type'] ||= data['type'] ||
           article? ? 'article' : 'resource'
       end
 
@@ -21,8 +21,10 @@ class Weby
       end
 
       %w(tag year month day).each do |method|
-        define_method("#{method}?") { page_type == method }
+        define_method("#{method}?") { resource_type == method }
       end
     end
+
+    include Typify
   end
 end

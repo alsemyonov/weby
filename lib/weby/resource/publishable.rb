@@ -62,5 +62,7 @@ class Weby
         data['already_published'] ||= published_before
       end
     end
+
+    include Publishable
   end
 end

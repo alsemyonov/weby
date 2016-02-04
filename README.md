@@ -42,6 +42,12 @@ Make better web by using semantics in your personal site.
     ```
 *   {Weby::Resource::Typify} — resources classification. Known types are: `resource` (default), `middleman-blog` Resource: `article`, `tag`, `year`, `month`, `day`
 
+*   {Weby::Resource::Schema}
+
+    ``` yaml
+    type: article
+    ```
+
 ### Methods:
 
 * `Middleman::Sitemap::Resource#ogp`

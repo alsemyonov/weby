@@ -62,5 +62,7 @@ class Weby
 
       delegate :data, :sitemap, :options, to: :resources_controller, prefix: :resources
     end
+
+    include DataPage
   end
 end

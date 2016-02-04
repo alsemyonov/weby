@@ -21,5 +21,7 @@ class Weby
         to_sortable <=> other.to_sortable
       end
     end
+
+    include Sortable
   end
 end
