@@ -5,7 +5,7 @@ class Weby
     module ListCheckBoxes
       CHECKBOX = /^\s*\[\s*( |x)\s*\]\s*/
 
-      def list_item(text, list_type)
+      def list_item(text, _list_type)
         tag = '<li'
         match = CHECKBOX.match(text)
         if match

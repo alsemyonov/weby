@@ -19,7 +19,7 @@ RSpec.describe Weby::Resource::Schema, schema: true do
     'year' => ['http://schema.org/CollectionPage'],
     'month' => ['http://schema.org/CollectionPage'],
     'day' => ['http://schema.org/CollectionPage'],
-    'tag' => ['http://schema.org/CollectionPage'],
+    'tag' => ['http://schema.org/CollectionPage']
   }.each do |resource_type, properties|
     schema_type = properties.first
     describe resource_type do

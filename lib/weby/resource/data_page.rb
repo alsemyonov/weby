@@ -58,8 +58,6 @@ class Weby
       # @return [Weby]
       attr_accessor :resources_controller
 
-      private
-
       delegate :data, :sitemap, :options, to: :resources_controller, prefix: :resources
     end
 

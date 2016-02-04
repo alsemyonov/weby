@@ -50,7 +50,7 @@ begin
     end
   end
   task doc: 'doc:generate'
-rescue LoadError => e
+rescue LoadError
   task(:doc) { abort 'Bundle with development group: `bundle install --with development`' }
 end
 

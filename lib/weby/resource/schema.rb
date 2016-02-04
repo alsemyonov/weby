@@ -14,7 +14,7 @@ class Weby
         'year' => 'http://schema.org/CollectionPage',
         'month' => 'http://schema.org/CollectionPage',
         'day' => 'http://schema.org/CollectionPage',
-        'tag' => 'http://schema.org/CollectionPage',
+        'tag' => 'http://schema.org/CollectionPage'
       }
 
       def self.lookup(name)

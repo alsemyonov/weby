@@ -3,11 +3,11 @@ require 'active_support/core_ext/time/calculations'
 
 Time.zone = 'UTC' if Time.zone.nil?
 
-Given /the timezone is "(.+?)"$/ do |zone|
+Given(/the timezone is "(.+?)"$/) do |zone|
   Time.zone = zone
 end
 
-Given /the (date|time|date and time) is (.+?)$/ do |datetime, value|
+Given(/the (date|time|date and time) is (.+?)$/) do |datetime, value|
   time = case datetime
          when 'date'
            Date.parse(value)

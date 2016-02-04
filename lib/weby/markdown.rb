@@ -24,7 +24,7 @@ class Weby
         smartypants: true,
         with_toc_data: true,
         no_intra_emphasis: true,
-        renderer: Renderer,
+        renderer: Renderer
       })
       config[:slim] ||= {}
       config[:slim][:markdown] = config[:markdown]
