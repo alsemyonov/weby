@@ -32,10 +32,10 @@ RSpec.describe Weby::Resource::Navigatable::Navigation do
     end
   end
 
-  it { should respond_to(:menu?) }
-  it { should respond_to(:data_lookup_path) }
-  it { should respond_to(:data) }
-  it { should respond_to(:title) }
-  it { should respond_to(:url) }
-  it { should respond_to(:path) }
+  it { is_expected.to respond_to(:menu?) }
+  it { is_expected.to respond_to(:data_lookup_path) }
+  it { is_expected.to respond_to(:data) }
+  it { is_expected.to respond_to(:title) }
+  it { is_expected.to respond_to(:url) }
+  it { is_expected.to respond_to(:path) }
 end

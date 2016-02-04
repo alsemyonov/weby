@@ -10,8 +10,8 @@ end
 RSpec.describe Weby::Resource::Schema, schema: true do
   subject { schema }
 
-  it { should respond_to(:type) }
-  it { should respond_to(:to_html_attributes) }
+  it { is_expected.to respond_to(:type) }
+  it { is_expected.to respond_to(:to_html_attributes) }
   {
     'page' => ['http://schema.org/ItemPage'],
     'article' => ['http://schema.org/BlogPosting'],
