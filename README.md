@@ -2,6 +2,10 @@
 
 [![Dependency Status](https://gemnasium.com/alsemyonov/weby.svg)](https://gemnasium.com/alsemyonov/weby)
 [![Build Status](https://travis-ci.org/alsemyonov/weby.svg?branch=master)](https://travis-ci.org/alsemyonov/weby)
+[![Code Climate](https://codeclimate.com/github/alsemyonov/weby/badges/gpa.svg)](https://codeclimate.com/github/alsemyonov/weby)
+[![Test Coverage](https://codeclimate.com/github/alsemyonov/weby/badges/coverage.svg)](https://codeclimate.com/github/alsemyonov/weby/coverage)
+[![Issue Count](https://codeclimate.com/github/alsemyonov/weby/badges/issue_count.svg)](https://codeclimate.com/github/alsemyonov/weby)
+[![Coverage Status](https://coveralls.io/repos/github/alsemyonov/weby/badge.svg?branch=master)](https://coveralls.io/github/alsemyonov/weby?branch=master)
 
 Make better web by using semantics in your personal site.
 
