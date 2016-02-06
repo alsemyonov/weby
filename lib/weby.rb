@@ -16,6 +16,10 @@ class Weby < ::Middleman::Extension
   option :enhance_slim, true, 'Customize Slim Engine to support shortcuts for role and itemprop'
   option :enhance_markdown, true, 'Customize Markdown renderer to support Abbreviations and list check boxes'
 
+  class << self
+    attr_accessor :instance
+  end
+
   # @return [Gem::Version]
   def self.version
     Gem.loaded_specs['weby'].version
@@ -43,6 +47,7 @@ class Weby < ::Middleman::Extension
 
     # Publish future dated pages in development environment
     options[:publish_future_dated] = (app.environment == :development) if options[:publish_future_dated] == nil
+    Weby.instance = self
   end
 
   def after_configuration
@@ -56,10 +61,11 @@ class Weby < ::Middleman::Extension
   def manipulate_resource_list(resources)
     resources.map do |resource|
       next resource if resource.ignored?
-      resource.resources_controller ||= self
 
       if app.environment == :production
-        app.ignore(resource.path) unless resource.published?
+        app.ignore(resource.url) unless resource.published?
+      else
+        resource.data['will_be_ignored_in_production'] unless resource.published?
       end
 
       resource

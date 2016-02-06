@@ -4,7 +4,7 @@ class Weby
   module Resource
     module Typify
       def resource_type
-        metadata[:locals]['type'] ||= data['type'] ||
+        metadata[:locals]['page_type'] ||= data['type'] ||
           article? ? 'article' : 'resource'
       end
 

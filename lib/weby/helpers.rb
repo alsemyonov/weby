@@ -30,6 +30,10 @@ class Weby
       content_tag(:pre, content_tag(:code, YAML.dump(object), class: 'yaml')) if condition
     end
 
+    def frontmatter(resource, condition = environment.development?)
+      content_tag(:pre, content_tag(:code, YAML.dump(resource.data) << "\n---", class: 'yaml')) if condition
+    end
+
     # Wraps Middleman::Application#environment into `StringInquirer`
     # @return [#development?, #production?]
     def environment

@@ -20,7 +20,6 @@ class Weby
         return data['parent_published'] if data.key?('parent_published')
         parent = self.parent
         return data['parent_published'] = :no_parent unless parent
-        parent.resources_controller ||= resources_controller
         data['parent_published'] = parent.respond_to?(:published?) ? parent.published? : !parent.ignored?
       end
 
@@ -28,7 +27,7 @@ class Weby
       def data_published?
         return data['published_by_data'] if data.key?('published_by_data')
         return data['published_by_data'] = :no_data unless respond_to?(:data)
-        data['published_by_data'] ||= data['published'] != false && published_by_date?
+        data['published_by_data'] ||= data['published'].to_s != 'false' && published_by_date?
       end
 
       # @return [Boolean]

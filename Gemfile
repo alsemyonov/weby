@@ -4,8 +4,7 @@ source 'https://rubygems.org/'
 gemspec
 
 group :development do
-  gem 'middleman-cli', git: 'https://github.com/middleman/middleman.git', branch: 'master'
-  gem 'middleman-core', git: 'https://github.com/middleman/middleman.git', branch: 'master'
+  gem 'middleman-cli', '~> 4.1.1'
   gem 'slim'
 
   platforms :ruby do
@@ -28,7 +27,6 @@ group :test do
 
   gem 'timecop', '~> 0.6.3'
   gem 'nokogiri'
-  gem 'kramdown'
 
   # Code Quality
   gem 'rubocop', '~> 0.24', require: false

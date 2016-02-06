@@ -13,6 +13,10 @@ RSpec.describe Weby::Resource::Navigatable::Navigation do
       { data_lookup_path: 'navigation', menu?: true, data: {} },
     { url: '/about/', path: 'about.html', title: 'About', data: {} } =>
       { data_lookup_path: 'navigation.about', menu?: true },
+    { url: '/2008.html', path: '2008.html', title: 'About', data: {} } =>
+      { data_lookup_path: 'navigation.2008', menu?: true },
+    { url: '/cv/', path: 'cv/index.html', title: 'CV', data: {} } =>
+      { data_lookup_path: 'navigation.cv', menu?: true },
     { url: '/about/me', path: 'me.html', title: 'About Me', data: { navigation: false } } =>
       { data_lookup_path: 'navigation.about.me', menu?: false }
   }.each do |resource_attributes, checks|
@@ -22,6 +26,7 @@ RSpec.describe Weby::Resource::Navigatable::Navigation do
           attributes = resource_attributes.dup
           attributes[:resources_data] = double('app.data', data_for_path: attributes[:resources_data] || nil)
           attributes[:data_lookup_path] = checks[:data_lookup_path].gsub(/^navigation.?/, '').presence
+          attributes[:paginated?] = false
           resource = double(Middleman::Sitemap::Resource, attributes)
           allow(resource).to receive(:try).and_return(nil)
           navigation = Weby::Resource::Navigatable::Navigation.new(resource)
