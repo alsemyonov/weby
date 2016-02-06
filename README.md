@@ -21,7 +21,7 @@ Make better web by using semantics in your personal site.
 
 ### Modules
 
-*   {Weby::Resource::DataPage}
+*   {Weby::Resource::MetaData}
 
     ``` yaml
     title: Page title used in navigation

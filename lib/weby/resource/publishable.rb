@@ -37,7 +37,7 @@ class Weby
 
       # @return [Boolean]
       def options_published?
-        resources_options.publish_future_dated
+        weby.options.publish_future_dated
       end
 
       # @return [Time]

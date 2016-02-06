@@ -24,7 +24,7 @@ RSpec.describe Weby::Resource::Navigatable::Navigation do
       checks.each do |name, value|
         specify "#{name} == #{value.inspect}" do
           attributes = resource_attributes.dup
-          attributes[:resources_data] = double('app.data', data_for_path: attributes[:resources_data] || nil)
+          attributes[:site_data] = double('app.data', data_for_path: attributes[:site_data] || nil)
           attributes[:data_lookup_path] = checks[:data_lookup_path].gsub(/^navigation.?/, '').presence
           attributes[:paginated?] = false
           resource = double(Middleman::Sitemap::Resource, attributes)

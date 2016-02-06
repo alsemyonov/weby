@@ -12,8 +12,7 @@ class Weby
           @resource = resource
         end
 
-        delegate :url, :path, :title, :resource_type,
-                 :resources_data, :locals, :paginated?, to: :@resource
+        delegate :url, :path, :title, :resource_type, :site_data, :locals, :paginated?, to: :@resource
 
         # @return [Hashie::Mash]
         def data
@@ -23,7 +22,7 @@ class Weby
           @data = (@data.nil? ? {} : { menu: @data }) unless @data.is_a?(Hash)
 
           @data.reverse_merge!(I18n.t(data_lookup_path, default: {}))
-          @data.reverse_merge!(resources_data.data_for_path(data_lookup_path) || {})
+          @data.reverse_merge!(site_data.data_for_path(data_lookup_path) || {})
           @data = Hashie::Mash.new(@data)
           @data
         end

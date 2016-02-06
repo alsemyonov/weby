@@ -23,9 +23,7 @@ class Weby
       require 'weby/resource/schema'
       require 'weby/resource/sortable'
       require 'weby/resource/typify'
-      Middleman::Sitemap::Resource.class_eval do
-        include Resource
-      end
+      Middleman::Sitemap::Resource.class_eval { include Resource }
     end
 
     # @return [Weby]
@@ -33,7 +31,10 @@ class Weby
       @resources_controller ||= Weby.instance
     end
 
-    delegate :data, :sitemap, :options, to: :weby, prefix: :resources
+    # @return [Hashie::Mash]
+    def site_data
+      weby.data
+    end
 
     # @return [URI::Generic]
     def canonical_url
@@ -55,7 +56,7 @@ class Weby
 
     # @return [Hash]
     def author
-      data['author'] || resources_data['author']
+      data['author'] || site_data['author']
     end
 
     # @return [String]

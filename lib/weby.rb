@@ -62,10 +62,12 @@ class Weby < ::Middleman::Extension
     resources.map do |resource|
       next resource if resource.ignored?
 
-      if app.environment == :production
-        app.ignore(resource.url) unless resource.published?
-      else
-        resource.data['will_be_ignored_in_production'] unless resource.published?
+      unless resource.published?
+        if app.environment == :production
+          app.ignore(resource.url)
+        else
+          resource.data['will_be_ignored_in_production'] = true
+        end
       end
 
       resource

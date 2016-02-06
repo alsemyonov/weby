@@ -21,12 +21,13 @@ class Weby
 
       # @return [<{name: String, content: String}>]
       def to_meta
-        meta = %i(description keywords).collect do |property|
+        meta = (site_data['metas'] || []) + (data['metas'] || [])
+        %i(description keywords).each do |property|
           value = public_send(property)
-          { name: property, content: value } if value
-        end.compact
+          meta << { name: property, content: value } if value
+        end
         meta << { name: :author, content: author.name } if author
-        meta << { name: :generator, content: "Weby/#{Weby.version}" }
+        meta << { name: :generator, content: "Weby/#{Weby.version} Ruby/#{RUBY_VERSION} (#{RUBY_PLATFORM})" }
         meta << { name: :debug, content: "Environment: #{weby.app.environment}" }
         if data.nofollow
           meta << { name: 'robots', content: data.nofollow.presence || 'noindex, nofollow' }

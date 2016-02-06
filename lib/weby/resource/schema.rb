@@ -1,11 +1,8 @@
 require 'weby/resource'
-require 'forwardable'
 
 class Weby
   module Resource
     class Schema
-      extend Forwardable
-
       TYPES = {
         'about' => 'http://schema.org/AboutPage',
         'contact' => 'http://schema.org/ContactPage',
@@ -26,11 +23,10 @@ class Weby
         @resource = resource
       end
 
-      attr_reader :resource
-      delegate [:data] => :resource
+      delegate :data, :resource_type, to: :@resource
 
       def type
-        @type ||= self.class.lookup(resource.resource_type)
+        @type ||= self.class.lookup(resource_type)
       end
 
       def to_html_attributes
@@ -38,6 +34,7 @@ class Weby
       end
     end
 
+    # @return [Schema]
     def schema
       @schema ||= Schema.new(self)
     end
