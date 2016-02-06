@@ -38,7 +38,7 @@ class Weby
 
     # @return [URI::Generic]
     def canonical_url
-      @canonical_url ||= URI.join(sitemap.url, url)
+      @canonical_url ||= URI.join(site_data.site.url, url)
     end
 
     # @return [String] dot.joined.string used for data lookups
