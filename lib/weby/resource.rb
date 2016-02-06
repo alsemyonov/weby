@@ -41,6 +41,10 @@ class Weby
       @canonical_url ||= URI.join(site_data.site.url, url)
     end
 
+    def resource_base_url
+      @resource_base_url ||= url.gsub(File.extname(url), '')
+    end
+
     # @return [String] dot.joined.string used for data lookups
     def data_lookup_path
       @data_lookup_path ||=

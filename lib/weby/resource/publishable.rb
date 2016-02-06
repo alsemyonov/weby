@@ -12,7 +12,7 @@ class Weby
       # 3. The article's date is after the current time
       # @return [Boolean]
       def published?
-        data['is_published'] ||= parent_published? && data_published?
+        data['is_published'] ||= data_published?
       end
 
       # @return [Boolean]

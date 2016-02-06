@@ -48,29 +48,20 @@ class Weby < ::Middleman::Extension
     # Publish future dated pages in development environment
     options[:publish_future_dated] = (app.environment == :development) if options[:publish_future_dated] == nil
     Weby.instance = self
-  end
-
-  def after_configuration
     Resource.setup!
     app.sitemap.extend Sitemap
   end
 
-  # Enhances every resource with +Weby::Extensions+,
-  # applies `published` rules
-  # @param [<Middleman::Sitemap::Resource>] resources
-  def manipulate_resource_list(resources)
-    resources.map do |resource|
-      next resource if resource.ignored?
+  def after_configuration
+    sitemap.resources.each do |resource|
+      next if resource.published?
 
-      unless resource.published?
-        if app.environment == :production
-          app.ignore(resource.url)
-        else
-          resource.data['will_be_ignored_in_production'] = true
-        end
+      if app.environment == :production
+        app.ignore(resource.url)
+        resource.children.each { |child| app.ignore(child.url) }
+      else
+        resource.data['will_be_ignored_in_production'] = true
       end
-
-      resource
     end
   end
 
