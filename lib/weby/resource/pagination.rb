@@ -11,10 +11,10 @@ class Weby
 
         # @return [Boolean]
         def paginated?
-          data['pageable']
+          data['pageable'] && locals['page_number'] > 1
         end
 
-        delegate :data, to: :@resource
+        delegate :data, :locals, to: :@resource
       end
 
       # @return [Paginator]
