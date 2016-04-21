@@ -49,14 +49,14 @@ Feature: Unpublished site section
     Then I should see "Future Site"
 
   Scenario: Unpublished site sections don't get built in production environment
-    And a fixture app "published-app"
+    Given a fixture app "published-app"
     And a file named "config.rb" with:
       """
       set :environment, :production
       activate :weby
       activate :directory_indexes
       """
-    Given a successfully built app at "published-app"
+    And a successfully built app at "published-app"
     When I cd to "build"
     Then the following files should not exist:
       | future/index.html       |
@@ -66,7 +66,7 @@ Feature: Unpublished site section
       | published/index.html    |
 
   Scenario: Unpublished site sections get built in development environment
-    Given a successfully built app at "published-app"
+    Given a successfully built app at "published-app" with flags "-e development"
     When I cd to "build"
     Then the following files should exist:
       | published/index.html    |
