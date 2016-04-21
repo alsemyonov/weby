@@ -21,7 +21,7 @@ class Weby
 
       # @return [<{name: String, content: String}>]
       def to_meta
-        meta = (site_data.site.metas || []) + (data.metas || [])
+        meta = (site_data['metas'] || []) + (data['metas'] || [])
         %i(description keywords).each do |property|
           value = public_send(property)
           meta << { name: property, content: value } if value
