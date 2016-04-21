@@ -34,7 +34,7 @@ Make better web by using semantics in your personal site.
 *   {Weby::Resource::Navigatable}
 
     ``` yaml
-    navigation:
+    menu:
       title: Page title used in navigation
       menu: true # (include in menu)
       relations:
