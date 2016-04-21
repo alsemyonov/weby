@@ -18,8 +18,10 @@ class Weby
         def data
           return @data if defined?(@data)
 
-          @data = @resource.data[:navigation]
-          @data = (@data.nil? ? {} : { menu: @data }) unless @data.is_a?(Hash)
+          @data = @resource.data[:menu]
+          unless @data.is_a?(Hash)
+            @data = @data.nil? ? {} : { menu: @data }
+          end
 
           @data.reverse_merge!(I18n.t(data_lookup_path, default: {}))
           @data.reverse_merge!(site_data.data_for_path(data_lookup_path) || {})
@@ -71,7 +73,9 @@ class Weby
 
         # @return [Boolean] visible in menu?
         def menu?
-          data[:menu] = title.present? unless data.key?(:menu)
+          unless data.key?(:menu)
+            data[:menu] = title.present?
+          end
           navigatable? && !paginated? && parent_menu? && data[:menu]
         end
 
