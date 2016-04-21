@@ -17,7 +17,7 @@ RSpec.describe Weby::Resource::Navigatable::Navigation do
       { data_lookup_path: 'navigation.2008', menu?: true },
     { url: '/cv/', path: 'cv/index.html', title: 'CV', data: {} } =>
       { data_lookup_path: 'navigation.cv', menu?: true },
-    { url: '/about/me', path: 'me.html', title: 'About Me', data: { navigation: false } } =>
+    { url: '/about/me', path: 'me.html', title: 'About Me', data: { menu: false } } =>
       { data_lookup_path: 'navigation.about.me', menu?: false }
   }.each do |resource_attributes, checks|
     context resource_attributes.to_json do
