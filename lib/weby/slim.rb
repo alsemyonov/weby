@@ -18,11 +18,13 @@ class Weby
           '#' => { attr: 'id' },
           '.' => { attr: 'class' },
           '&' => { attr: 'itemprop' },
+          '%' => { attr: 'rel' },
           '@' => { attr: 'role' }
         },
         merge_attrs: {
           'class' => ' ',
-          'itemprop' => ' '
+          'itemprop' => ' ',
+          'rel' => ' '
         }
       )
     end
