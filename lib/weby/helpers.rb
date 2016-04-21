@@ -39,5 +39,12 @@ class Weby
     def environment
       @environment ||= ActiveSupport::StringInquirer.new(app.environment.to_s)
     end
+
+    def mail_attrs(email, mail_options = {})
+      html_options = mail_options.slice!(:cc, :bcc, :subject, :body)
+      mail_query = Rack::Utils.build_query(mail_options).gsub(/\+/, '%20').gsub('%40', '@')
+      mail_href = "mailto:#{email}"; mail_href << "?#{mail_query}" if mail_query.present?
+      html_options.merge(href: mail_href)
+    end
   end
 end
