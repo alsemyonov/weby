@@ -4,7 +4,7 @@ source 'https://rubygems.org/'
 gemspec
 
 group :development do
-  gem 'middleman-cli', '~> 4.1.1'
+  gem 'middleman-cli', '~> 4.1.10'
   gem 'slim'
 
   platforms :ruby do

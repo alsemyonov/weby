@@ -1,4 +1,5 @@
 require 'weby/resource'
+require 'active_support/core_ext/time/calculations'
 
 class Weby
   module Resource

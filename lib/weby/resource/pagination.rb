@@ -11,7 +11,7 @@ class Weby
 
         # @return [Boolean]
         def paginated?
-          data['pageable'] && locals['page_number'] > 1
+          data['pageable'] && locals['page_number'].try(:>, 1)
         end
 
         delegate :data, :locals, to: :@resource

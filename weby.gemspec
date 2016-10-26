@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   # The version of middleman-core your extension depends on
-  s.add_runtime_dependency('middleman-core', ['~> 4.1.1'])
+  s.add_runtime_dependency('middleman-core', ['~> 4.1.7'])
   s.add_runtime_dependency('redcarpet', ['~> 3.3.4'])
 
   # Additional dependencies
